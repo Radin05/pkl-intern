@@ -14,26 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->middleware('auth');
 
 use App\Http\Controllers\UserController;
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', Role::class]], function () {
+    Route::get('/', function () {
+        return view('produk.index');
+    });
+    // untuk Route Backend Lainnya
+    Route::resource('user', App\Http\Controllers\UserController::class);
+});
+
 // Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 //  Route::resource('user', UserController::class)->middleware(Role::class);
 //  Route::get('/', function () {
 //   return view('user');
 //  });
 // });
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', Role::class]], function () {
- Route::get('/', function () {
-  return view('produk.index');
- });
- // untuk Route Backend Lainnya
- Route::resource('user', App\Http\Controllers\UsersController::class);
-
-});
-
 
 Auth::routes();
 
@@ -42,3 +41,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 use App\Http\Controllers\ProdukController;
 Route::resource('produk', ProdukController::class);
+
+use App\Http\Controllers\PemesananController;
+Route::resource('pemesanan', PemesananController::class);

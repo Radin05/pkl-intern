@@ -89,12 +89,20 @@ class ProdukController extends Controller
   */
  public function update(Request $request, $id)
     {
+    // $request->validate([
+    //   'nama_produk'     => ['required', 'string', 'max:255'],
+    //   'harga'    => ['required', 'integer', 'max:255'],
+    //   'kategori'     => ['required', 'string', 'max:255'],
+    //   'stok'    => ['required', 'integer', 'max:255'],
+    //   'cover'    => ['required'],
+    // ]);
+
     $produk               = Produk::findOrFail($id);
     $produk->nama_produk  = $request->nama_produk;
     $produk->harga        = $request->harga;
     $produk->kategori     = $request->kategori;
     $produk->stok         = $request->stok;
-    $produk->cover       = $request->cover;
+    // $produk->cover       = $request->cover;
 
     // upload image
     if ($request->hasFile('cover')) {

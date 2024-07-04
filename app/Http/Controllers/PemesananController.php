@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pemesanan;
+use App\Models\Produk;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
@@ -14,7 +15,10 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        //
+
+        $produk = Produk::all();
+        $pemesanan = Pemesanan::all();
+        return view('pemesanan.index', compact('pemesanan','produk'));
     }
 
     /**
@@ -24,7 +28,8 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        //
+        $produk = Produk::all();
+        return view('pemesanan.create', compact('produk'));
     }
 
     /**

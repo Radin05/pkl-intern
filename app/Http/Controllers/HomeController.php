@@ -12,7 +12,6 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
     *
-    * @return void
     */
 
     // public function __construct()
@@ -32,7 +31,6 @@ class HomeController extends Controller
         if ($user->role == 1){
             return view('home');
         }else {
-            return view('produk.index');
         }
     }
 }

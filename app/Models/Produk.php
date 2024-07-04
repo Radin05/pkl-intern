@@ -12,9 +12,9 @@ class Produk extends Model
     protected $fillable = ['id','nama_produk', 'harga', 'kategori', 'stok', 'gambar'];
     public $timestamps = true;
 
-    public function Product()
+    public function Pemesanan()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Pemesanan::class);
     }
 
     public function deleteImage(){

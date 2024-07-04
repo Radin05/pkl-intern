@@ -47,7 +47,13 @@
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="text-center mb-5">Lihat Menu</h3>
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 830px;" width="30" height="30" fill="currentColor"
+                                            class="bi bi-x mb-5" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                        </svg>
+                                            <h3 class="text-center mb-5">Ubah Menu
+                                            </h3>
                                         </div>
                                         {{-- CONTENT --}}
                                         <div id="page-wrapper">
@@ -80,8 +86,8 @@
                                                                             </div>
                                                                             <label class="mt-4 mx-2">Gambar</label>
                                                                             <div class="form-group">
-                                                                                <img src="{{ asset('/images/produk/' . $produk->cover) }}" width="200px">
-                                                                                <input type="file" class="form-control" name="cover">
+                                                                                <img src="{{ asset('/images/produk/' . $produk->cover ? $produk->cover : '') }}" width="200px">
+                                                                                <input type="file" class="form-control" name="cover" value="{{ $produk->cover }}">
                                                                             </div>
                                                                             <a href="{{route('produk.index')}}" class="btn-secondary btn mt-2 btn-default">Kembali</a>
                                                                             <button type="submit" class="btn-success btn mt-2 btn-default">Edit</button>
